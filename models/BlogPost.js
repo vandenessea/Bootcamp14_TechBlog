@@ -22,9 +22,10 @@ BlogPost.init(
         date: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: DataTypes.NOW,         // value at creation will be current datetime
         },
-        userID: {
-            type: DataTypes.INTEGER,
+        user_id: {
+            type: DataTypes.INTEGER,             // this is a foreign key which references User.id 
             references: {
                 model: 'user',
                 key: 'id'
