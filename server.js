@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 9999;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Logging DB info
+console.log(`Database name: ${sequelize.config.database} \n running on port: ${sequelize.config.port} \n under hostname: ${sequelize.config.host}`)
+
 // Listener. Ths effectively 'starts' our server
 app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+    console.log(`Node Server running on port: ${PORT}`);
 })
