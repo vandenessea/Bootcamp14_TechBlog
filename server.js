@@ -1,26 +1,18 @@
-// Main module which runs the express server
-
-const path = require('path');
+// DEPENDENCIES
 const express = require('express');
-// const session = require('express-session');
-// const exphbs = require('express-handlebars');
-// const routes = require('./controllers')
-// const helpers = require('./utils/helpers');
 
-// const sequelize = require('./config/connection');
-// const SequelizeStore = require('connect-sessino-sequelize')(session.Store);
+// EXPRESS CONFIGURATION
+// tells node that we are creating an express server
+const app = express();  
 
-const app = express();
+// sets an initial port.
 const PORT = process.env.PORT || 9999;
 
-//Inform Express.js on which template engine to use
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
-
-app.use(express.json());
+// Sets up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on port: ${PORT}`));
-});
+// Listener. Ths effectively 'starts' our server
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+})
