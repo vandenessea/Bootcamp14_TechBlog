@@ -1,5 +1,6 @@
 // DEPENDENCIES
 const express = require('express');
+const sequelize = require('./config/connection');
 
 // EXPRESS CONFIGURATION
 // tells node that we are creating an express server
