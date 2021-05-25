@@ -1,6 +1,7 @@
 // DEPENDENCIES
 const express = require('express');
 const sequelize = require('./config/connection');
+const routes = require('./controllers');
 
 // EXPRESS CONFIGURATION
 // tells node that we are creating an express server
@@ -15,6 +16,9 @@ app.use(express.json());
 
 // Logging DB info
 console.log(`Database name: ${sequelize.config.database} \n running on port: ${sequelize.config.port} \n under hostname: ${sequelize.config.host}`)
+
+// tells app what routes to use
+app.use(routes);
 
 // Listener. Ths effectively 'starts' our server
 app.listen(PORT, () => {
