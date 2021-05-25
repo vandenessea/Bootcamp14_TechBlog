@@ -27,7 +27,14 @@ router.get('/users/all/:id', async (req, res) => {
                 { model: Comment } 
             ]     
         });
-        res.status(200).json(userData);          // this can only be sent once
+
+        // check to see if user data was returned
+        if(!userData) {
+            res.status(404).json({ message: 'No users found with this id'} );
+        } else {
+            res.status(200).json(userData);
+        }
+
     } catch (err) {
         res.status(500).json(err);
     }
@@ -57,7 +64,14 @@ router.get('/blogposts/all/:id', async (req, res) => {
                 { model: Comment }
             ]
         });
-        res.status(200).json(bpData);
+
+        // check to see if blog post data was returned
+        if(!bpData) {
+            res.status(404).json({ message: 'No blog posts found with this id'} );
+        } else {
+            res.status(200).json(bpData);
+        }
+        
     } catch (err) {
         res.status(500).json(err);
     }
@@ -88,7 +102,14 @@ router.get('/comments/all/:id', async (req, res) => {
                 { model: BlogPost }
             ]
         });
-        res.status(200).json(commentData);
+
+        // check to see if comment data was returned
+        if(!commentData) {
+            res.status(404).json({ message: 'No comments found with this id'} );
+        } else {
+            res.status(200).json(commentData);
+        }
+
     } catch (err) {
         res.status(500).json(err);
     }
