@@ -19,7 +19,27 @@ router.post('/', async (req, res) => {
 });
 
 
-// DELETE - delete a user
+// PUT - modify a user by its 'id' value
+router.put('/:id', async (req, res) => {
+    try {
+        console.log(`\n Editing record id: ${req.body.id} \n`)
+
+        const userData = await User.update(
+            // set all attributes of user to values passed in to req.body
+            { username: req.body.username,
+              email: req.body.email,
+              password: req.body.password },
+              { where: {id: req.params.id} }
+        )
+        res.status(200).json(userData);
+
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
+// DELETE - delete a user by its 'id' value
 router.delete('/:id', async (req, res) => {
     try {
         const userData = await User.destroy({
