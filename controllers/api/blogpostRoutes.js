@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, BlogPost, Comment } = require('../../models');
+const { BlogPost } = require('../../models');
 
 // this is at the /api endpoint
 
@@ -19,12 +19,12 @@ router.post('/', async (req, res) => {
 });
 
 
-// PUT - modify a user by its 'id' value
+// PUT - modify a blog post by its 'id' value
 router.put('/:id', async (req, res) => {
     try {
 
         const bpData = await BlogPost.update(
-            // set all attributes of user to values passed in to req.body
+            // set all attributes of blog posts to values passed in to req.body
             { title: req.body.title,
               content: req.body.content,
               user_id: req.body.user_id },
@@ -35,7 +35,7 @@ router.put('/:id', async (req, res) => {
         if (!bpData) {
             res.status(404).json({message: 'no blog post found with this id'});
         } else {
-            console.log(`\n Editing blog post record id: ${req.body.id} \n`)
+            console.log(`\n Editing blog post record id: ${req.params.id} \n`)
             res.status(200).json(bpData);
         }
         
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
 })
 
 
-// DELETE - delete a user by its 'id' value
+// DELETE - delete a blog post by its 'id' value
 router.delete('/:id', async (req, res) => {
     try {
         const bpData = await BlogPost.destroy({
