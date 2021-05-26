@@ -3,6 +3,7 @@ const express = require('express');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 
+
 // EXPRESS CONFIGURATION
 // tells node that we are creating an express server
 const app = express();  
