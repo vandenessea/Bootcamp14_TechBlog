@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../models');
 
 // GET - all users
-router.get('/users', async (req, res) => {
+router.get('/user', async (req, res) => {
     try {
         console.log(`\n Getting all user data \n`);
 
@@ -16,7 +16,7 @@ router.get('/users', async (req, res) => {
 
 
 // GET - user by id with associations to blogposts and comments
-router.get('/users/all/:id', async (req, res) => {
+router.get('/user/all/:id', async (req, res) => {
     try {
         console.log(`\n Getting data for user with id: ${req.params.id} \n`)
 
@@ -41,7 +41,7 @@ router.get('/users/all/:id', async (req, res) => {
 });
 
 // GET - all blog posts
-router.get('/blogposts', async (req, res) => {
+router.get('/blogpost', async (req, res) => {
     try {
         console.log(`\n Getting all blog post data \n`);
 
@@ -53,7 +53,7 @@ router.get('/blogposts', async (req, res) => {
 });
 
 // GET - blog post by id with associations to users and comments
-router.get('/blogposts/all/:id', async (req, res) => {
+router.get('/blogpost/all/:id', async (req, res) => {
     try {
         console.log(`\n Getting data for blog post with id: ${req.params.id} \n`);
 
@@ -79,7 +79,7 @@ router.get('/blogposts/all/:id', async (req, res) => {
 
 
 // GET - all comments
-router.get('/comments', async (req, res) => {
+router.get('/comment', async (req, res) => {
     try {
         console.log(`\n Getting all comment data \n`);
 
@@ -92,7 +92,7 @@ router.get('/comments', async (req, res) => {
 
 
 // GET - comment by id with associations to User and BlogPost
-router.get('/comments/all/:id', async (req, res) => {
+router.get('/comment/all/:id', async (req, res) => {
     try {
         console.log(`\n Getting data for comment with id: ${req.params.id} \n`)
 
