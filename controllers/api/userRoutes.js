@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
 // PUT - modify a user by its 'id' value
 router.put('/:id', async (req, res) => {
     try {
-        console.log(`\n Editing record id: ${req.body.id} \n`)
 
         const userData = await User.update(
             // set all attributes of user to values passed in to req.body
@@ -31,7 +30,14 @@ router.put('/:id', async (req, res) => {
               password: req.body.password },
               { where: {id: req.params.id} }
         )
-        res.status(200).json(userData);
+        // if wrong id entered
+        if (!userData) {
+            res.status(404).json({message: 'no user found with this id'});
+        } else {
+            console.log(`\n Editing record id: ${req.body.id} \n`);
+            res.status(200).json(userData);
+        }
+
 
     } catch (err) {
         res.status(400).json(err)
