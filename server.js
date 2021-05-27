@@ -8,7 +8,7 @@ const path = require('path');
 
 // HANDLEBARS configuration
 // set up Handlebars.js engine
-const hbs = exphbs.create();
+const hbs = exphbs.create({});
 
 // EXPRESS CONFIGURATION
 // tells node that we are creating an express server
@@ -25,6 +25,7 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('./controllers/homeRoutes'));
 
 // tells app what routes to use
 app.use(routes);
