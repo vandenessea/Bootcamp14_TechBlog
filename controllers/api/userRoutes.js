@@ -28,7 +28,9 @@ router.put('/:id', async (req, res) => {
             { username: req.body.username,
               email: req.body.email,
               password: req.body.password },
-              { where: {id: req.params.id} }
+              { individualHooks: true, 
+                where: {id: req.params.id} 
+            }
         )
         // if wrong id entered
         if (!userData) {

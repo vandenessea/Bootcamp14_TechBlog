@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../models');
 
+
+//TEST - render homepage
+router.get('/test', async (req, res) => {
+    try {
+        res.render('main');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+
 // GET - all users
 router.get('/user', async (req, res) => {
     try {
