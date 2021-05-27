@@ -5,11 +5,11 @@ const { User, BlogPost, Comment } = require('../models');
 //TEST - render homepage
 router.get('/test', async (req, res) => {
     try {
-        res.render('main');
+        res.render('test');
     } catch (err) {
         res.status(500).json(err);
     }
-})
+});
 
 
 // GET - all users
