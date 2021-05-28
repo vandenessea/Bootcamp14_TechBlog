@@ -2,10 +2,22 @@ const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../models');
 
 
-//TEST - render homepage
-router.get('/test', async (req, res) => {
+// render homepage
+router.get('/', async (req, res) => {
     try {
-        res.render('test');
+        //get all blog posts and JOIN with user 
+        const bpData = await BlogPost.findAll({
+            include: [{ model: User }]
+        });
+
+        //serialize data so template can read it
+        const bp = bpData.map((post) => post.get({ plain: true }));
+
+        // pass serialized data into template
+        // render 'home' view
+        res.render('home', { bp });
+
+
     } catch (err) {
         res.status(500).json(err);
     }
