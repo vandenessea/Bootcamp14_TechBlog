@@ -28,5 +28,24 @@ a {
     margin: 10px 0 5px 35px;
 }
 
+/* Individual blog post styles */
+#authorName, #datePosted {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#singlePost {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#comments p{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(211, 211, 211);
+    border-radius: 10px;
+    padding: 5px;
+}
 
 

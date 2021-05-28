@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
         });
 
         //serialize data so template can read it
+        // need to map over it because this is an array of objects
         const bp = bpData.map((post) => post.get({ plain: true }));
 
         // pass serialized data into template
@@ -24,6 +25,51 @@ router.get('/', async (req, res) => {
 });
 
 
+// render individual BlogPost with associated User and Comment data
+router.get('/post/:id', async (req, res) => {
+    try {
+
+        const bpData = await BlogPost.findByPk(req.params.id, {
+            //this JOINS with User and Comment
+            include: [
+                { model: User },
+                { model: Comment }
+            ]
+        });
+
+        // serialize data so that template can read it
+        // no need to map over it because this is one object
+        const bp = bpData.get({ plain: true });
+
+        res.render('post', {bp});
+
+        
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
+
+
+// TEST - render post view
+// router.get('/post/:id', async (req, res) => {
+//     try {
+
+//         const bpData = await BlogPost.findAll(
+//                 {include: [{model: User}, {model: Comment}]},
+//                 {where: { id: req.params.id }}
+//             );
+        
+//         // serialize data so that template can read it
+//         const bp = bpData.map((post) => post.get({ plain: true }));
+//         res.status(200).json(bp);
+//         // res.render('post', { bp });
+
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 
 // GET - all users
