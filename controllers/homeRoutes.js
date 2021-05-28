@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         const bp = bpData.map((post) => post.get({ plain: true }));
 
         // pass serialized data into template
-        // render 'home' view
+        // render 'home' view and pass bp data into it
         res.render('home', { bp });
 
 
@@ -22,6 +22,8 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
 
 
 // GET - all users

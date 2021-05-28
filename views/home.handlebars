@@ -1,8 +1,35 @@
-<h1> This is from home.handlebars </h1>
+{{!-- <section id="blogposts">
+    {{#each bp as |bp|}}
 
-{{#each bp as |bp|}}
-<a href="/api/blogpost/post/{{bp.id}}"><div class="blogpost">
-    <div>Post: {{bp.title}} By: {{bp.user.username}}</div>
-    <div>{{this.content}}</div>  <!-- can also use this instead of bp -->
-</div></a>
-{{/each}}
+    <a href="/api/blogpost/post/{{bp.id}}"><div class="blogpost">
+        <div>Post: {{bp.title}} By: {{bp.user.username}}</div>
+        <div>{{this.content}}</div>  <!-- can also use this instead of bp -->
+    </div></a>
+    {{/each}}
+</section> --}}
+
+
+{{!-- <section id="blogposts"> 
+    {{#each bp as |bp|}}
+    <div class='box'>Box </div>
+    {{/each}}
+
+</section> --}}
+
+
+
+<section id="blogposts">
+    {{#each bp as |bp|}}
+    <div class="postItem col-md-12">
+        <a href='https://getbootstrap.com/docs/4.0/components/card/'>
+            <div class="card">
+            <div class="card-body">
+                <h1>{{bp.title}}</h1>
+                <h6 class="card-subtitle text-muted">Author: {{bp.user.username}}</h6>
+                <p class="card-text">{{this.content}}</p>   <!-- can also use 'this' instead of bp -->
+            </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</section>

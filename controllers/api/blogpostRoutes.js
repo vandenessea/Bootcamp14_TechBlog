@@ -3,11 +3,9 @@ const { User, BlogPost, Comment } = require('../../models');
 
 // this is at the /api endpoint
 
-
-
-// Render an individual blog post page
+// render individual blog post w/ Comments and User information
 router.get('/post/:id', async (req, res) => {
-    console.log('helo');
+
     try {
         
         const bpData = await BlogPost.findByPk(req.params.id, {
@@ -21,6 +19,7 @@ router.get('/post/:id', async (req, res) => {
         // serialize data so template can read it
         const bp = bpData.map((post) => post.get({ plain: true }));
 
+        console.log('hello world');
         // pass serialized data into template
         // render 'post' view and pass bp data into it
         res.render('post', { bp });
@@ -28,7 +27,10 @@ router.get('/post/:id', async (req, res) => {
     } catch (err) {
         res.status(400).json(err);
     }
-})
+});
+
+
+
 
 
 
