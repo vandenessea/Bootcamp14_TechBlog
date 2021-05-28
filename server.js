@@ -24,8 +24,8 @@ app.set('view engine', 'handlebars');
 // Sets up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/homeRoutes'));
+// Sets location of static public assets (css and client js files)
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 // tells app what routes to use
