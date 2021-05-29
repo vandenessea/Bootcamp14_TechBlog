@@ -1,14 +1,32 @@
 <section id="loginForm">
-    <div id="holder">
+    <form class="login-form" id="holder">
         <div class="row px-3"> <label class="mb-1">
-                <h6 class="mb-0 text-sm">Email Address</h6>
-            </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> </div>
+                <h6 class="mb-0 text-sm">Username</h6>
+            </label> <input class="mb-4" type="text" name="email" id="username-login" placeholder="Enter a valid username"> </div>
         <div class="row px-3"> <label class="mb-1">
                 <h6 class="mb-0 text-sm">Password</h6>
-            </label> <input type="password" name="password" placeholder="Enter password"> </div>
+            </label> <input type="password" name="password" id="password-login" placeholder="Enter password"> </div>
         <div class="row px-3 mb-4">
         </div>
-        <div class="row mb-3 px-3"> <button type="button" class="btn btn-primary">Login</button> </div>
-        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger" href="/register">Register</a></small> </div>
-    </div>
+        <div class="row mb-3 px-3"> <button type="button" class="btn btn-primary" id="loginBtn">Login</button> </div>
+        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger" href="/register"><span id="register">Register</span></a></small> </div>
+    </form>
 </section>
+
+{{!-- <section id="login-form">
+    <form class="form login-form" id="holder">
+      <div class="form-group">
+        <label for="email-login">email:</label>
+        <input class="form-input" type="text" id="email-login" />
+      </div>
+      <div class="form-group">
+        <label for="password-login">password:</label>
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+</section> --}}
+
+<script src="./js/login.js"></script>
