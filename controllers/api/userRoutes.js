@@ -4,32 +4,41 @@ const { User } = require('../../models');
 // this is at the /api endpoint
 
 // route to verify user login credentials
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
+      // validating username
       const userData = await User.findOne({ where: { username: req.body.username } });
-  
+      console.log(`\n ${userData.password} \n`);
       if (!userData) {
         res
           .status(400)
-          .json({ message: 'Incorrect username or password, please try again' });
+          .json({ message: 'Incorrect username, please try again' });
         return;
       }
-  
-      const validPassword = await userData.checkPassword(req.body.password);
-  
+
+      // validating password
+      const validPassword = await User.findOne({ where: { password: req.body.password } });
+      console.log(`\n ${validPassword.password} \n`);
       if (!validPassword) {
         res
           .status(400)
-          .json({ message: 'Incorrect username or password, please try again' });
+          .json({ message: 'Incorrect username, please try again' });
         return;
       }
-  
+
+      // render homepage if valid credentials given by user
+      res.render('home');
+
     } catch (err) {
       res.status(400).json(err);
     }
   });
 
 
+
+
+
+  
 
 
 
