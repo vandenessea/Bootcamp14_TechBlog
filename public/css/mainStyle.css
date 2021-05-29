@@ -48,4 +48,18 @@ a {
     padding: 5px;
 }
 
+/* Login view styles */
+#loginForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#holder {
+    margin: 10px;
+    width: 50%;
+}
+
 

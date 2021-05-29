@@ -63,7 +63,17 @@ router.get('/login', async (req, res) => {
 });
 
 
+// Render registration page
+router.get('/register', async (req, res) => {
+    try {
+        // render 'login' view
+        res.render('register');
 
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 
