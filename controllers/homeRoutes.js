@@ -43,13 +43,28 @@ router.get('/post/:id', async (req, res) => {
 
         res.render('post', {bp});
 
-        
-
     } catch (err) {
         res.status(500).json(err);
     }
 
 });
+
+
+// Render login page
+router.get('/login', async (req, res) => {
+    try {
+        // render 'login' view
+        res.render('login');
+
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+
+
 
 
 // TEST - render post view
