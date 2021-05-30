@@ -4,6 +4,47 @@ const { User, BlogPost, Comment } = require('../../models');
 // this is at the /api endpoint
 
 
+// Make new blog post route
+router.post('/newPost', async (req, res) => {
+          
+    // validating username
+    const postData = await User.findOne({ where: { username: req.body.username } });
+    
+    if (!postData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect username, please enter valid username' });
+      return;
+    }
+
+    // create object with data structure I need for new blog post
+    const bpData = {
+        title: req.body.title,
+        content: req.body.content,
+        user_id: postData.id,
+    }
+
+    // create new blog post
+    const newPost = await BlogPost.create(bpData);
+
+    //WHY WONT THIS RENDER THE HOME PAGE!!???
+    // render individual blog post page
+    res.render('home');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // POST - create a new blog post

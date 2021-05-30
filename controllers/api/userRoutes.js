@@ -84,13 +84,37 @@ router.post('/registerUser', async (req, res) => {
 
 
 router.post('/logout', (req, res) => {
-    console.log(`\n Before: ${req.session.logged_in}  \n`);
+    console.log(`\n Logged in: ${req.session.logged_in}  \n`);
     
     if (req.session.logged_in) {
         res.render('login');
     }
     
-// });
+});
+
+
+// Make new blog post route
+router.post('/newPost/makePost', async (req, res) => {
+          
+          // validating username
+          const userData = await User.findOne({ where: { username: req.body.username } });
+          if (!userData) {
+            res
+              .status(400)
+              .json({ message: 'Incorrect username, please enter valid username' });
+            return;
+          }
+
+          const newPost = await User.create(req.body);
+  
+          // render homepage if valid credentials are given
+          res.render('home');
+})
+
+
+
+
+
 
 
 

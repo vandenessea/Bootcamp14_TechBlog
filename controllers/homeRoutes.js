@@ -40,8 +40,15 @@ router.get('/post/:id', async (req, res) => {
         // serialize data so that template can read it
         // no need to map over it because this is one object
         const bp = bpData.get({ plain: true });
+        
+        console.log(`\n ${bp.id} \n`)
+
 
         res.render('post', {bp});
+        // res.render('post', {
+        //     ...bp, 
+        //     logged_in: req.session.logged_in
+        // });
 
     } catch (err) {
         res.status(500).json(err);
@@ -76,6 +83,15 @@ router.get('/register', async (req, res) => {
 });
 
 
+// Render New Post page
+router.get('/newPost', async (req, res) => {
+    try {
+        // render 'newPost' view
+        res.render('newPost');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 
