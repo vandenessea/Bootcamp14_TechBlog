@@ -77,6 +77,13 @@ router.get('/register', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
 // TEST - render post view
 // router.get('/post/:id', async (req, res) => {
 //     try {
