@@ -4,8 +4,8 @@ const registrationFormHandler = async (event) => {
   
     // collect values from the login form
     const username = document.querySelector('#username-entry').value.trim();
-    const email = document.querySelector('#password-entry').value.trim();
-    const password = document.querySelector('#email-entry').value.trim();
+    const email = document.querySelector('#email-entry').value.trim();
+    const password = document.querySelector('#password-entry').value.trim();
   
     // if username, email, and password values are provided
     if (username && email && password) {
