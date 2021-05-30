@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
 
   // if both username and password values are provided
   if (username && password) {
-    // Send a POST request to the API endpoint
+    // Send POST request to the API endpoint
     const response = await fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
@@ -23,7 +23,6 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/');
     } else {
-      // alert(response.statusText);
       alert('Please enter a valid username and password');
     }
   }

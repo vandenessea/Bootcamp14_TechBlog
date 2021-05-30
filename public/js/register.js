@@ -1,6 +1,4 @@
-
 const registrationFormHandler = async (event) => {
-  
   
     event.preventDefault();
   
@@ -17,6 +15,13 @@ const registrationFormHandler = async (event) => {
             body: JSON.stringify({ username, email, password }),
             headers: { 'Content-Type': 'application/json'},
         });
+
+        if (response.ok) {
+            // If successful, redirect the browser to the profile page
+            document.location.replace('/');
+          } else {
+            alert('Please enter a valid username and password');
+          }
     }
 };
 

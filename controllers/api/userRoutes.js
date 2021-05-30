@@ -6,6 +6,7 @@ const { User } = require('../../models');
 // route to verify user login credentials
 router.post('/login', async (req, res) => {
     try {
+
       // validating username
       const userData = await User.findOne({ where: { username: req.body.username } });
       console.log(`\n ${userData.password} \n`);
@@ -16,13 +17,13 @@ router.post('/login', async (req, res) => {
         return;
       }
 
-      // validating password
-      const validPassword = await User.findOne({ where: { password: req.body.password } });
-      console.log(`\n ${validPassword.password} \n`);
+      //validating password based on user credentials
+      const validPassword = await userData.checkPassword(req.body.password);
+
       if (!validPassword) {
         res
           .status(400)
-          .json({ message: 'Incorrect username, please try again' });
+          .json({ message: 'Incorrect password, please try again' });
         return;
       }
 
