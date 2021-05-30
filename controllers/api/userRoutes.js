@@ -71,7 +71,7 @@ router.post('/registerUser', async (req, res) => {
 
 // // user logout route
 // router.post('/logout', (req, res) => {
-//     console.log(`\n Before: ${req.session.logged_in}  \n`);
+//     console.log(`\n  THIS HERE Before: ${req.session.logged_in}  \n`);
 //     if (req.session.logged_in) {
 //         req.session.destroy(() => {
 //             res.status(204).end();
@@ -85,9 +85,12 @@ router.post('/registerUser', async (req, res) => {
 
 router.post('/logout', (req, res) => {
     console.log(`\n Before: ${req.session.logged_in}  \n`);
-
-    res.render('login');
-});
+    
+    if (req.session.logged_in) {
+        res.render('login');
+    }
+    
+// });
 
 
 
