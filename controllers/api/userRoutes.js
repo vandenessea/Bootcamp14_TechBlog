@@ -9,7 +9,6 @@ router.post('/login', async (req, res) => {
 
       // validating username
       const userData = await User.findOne({ where: { username: req.body.username } });
-      console.log(`\n ${userData.password} \n`);
       if (!userData) {
         res
           .status(400)
@@ -27,6 +26,16 @@ router.post('/login', async (req, res) => {
         return;
       }
 
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+        
+        res.json({ user: userData, message: 'You are now logged in!' });
+      });
+
+      console.log(`\n User id:  ${req.session.user_id} \n`);
+      console.log(`\n Logged in? ${req.session.logged_in} \n`);
+
       // render homepage if valid credentials given by user
       res.render('home');
 
@@ -43,6 +52,14 @@ router.post('/registerUser', async (req, res) => {
     try {
         const userData = await User.create(req.body);
 
+        // save user_id and logged_in into session
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+      
+            res.status(200).json(userData);
+          });
+
         // render homepage if valid credentials are given
         res.render('home');
     } catch (err) {
@@ -52,10 +69,25 @@ router.post('/registerUser', async (req, res) => {
 
 
 
+// // user logout route
+// router.post('/logout', (req, res) => {
+//     console.log(`\n Before: ${req.session.logged_in}  \n`);
+//     if (req.session.logged_in) {
+//         req.session.destroy(() => {
+//             res.status(204).end();
+//         });
+//     } else {
+//         res.status(404).end();
+//     }
+//     console.log(`\n After: ${req.session.logged_in} \n`);
+// });
 
 
+router.post('/logout', (req, res) => {
+    console.log(`\n Before: ${req.session.logged_in}  \n`);
 
-
+    res.render('login');
+});
 
 
 
