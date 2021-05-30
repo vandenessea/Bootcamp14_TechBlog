@@ -9,17 +9,15 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-
 const app = express();
 const PORT = process.env.PORT || 9999;
-
 
 // Set up Handlebars.js engine
 const hbs = exphbs.create({});
 
 // Create session
 const sess = {
-  secret: 'Super secret session',
+  secret: 'secret session',
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -48,6 +46,6 @@ console.log(`Database name: ${sequelize.config.database} \n running on port: ${s
 
 
 // Listener. Ths effectively 'starts' our server
-app.listen(PORT, () => {
-    console.log(`Node Server running on port: ${PORT}`);
-});
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log(`Now listening on port: ${PORT}`));
+  });
