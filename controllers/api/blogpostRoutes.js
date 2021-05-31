@@ -35,8 +35,7 @@ router.post('/newPost', async (req, res) => {
 
 
 
-// delete blog post route
-// DELETE - delete a blog post by its 'id' value
+// delete blog post route delete a blog post by its 'id' value
 router.delete('/:id', async (req, res) => {
     try {
         const bpData = await BlogPost.destroy({
@@ -83,11 +82,5 @@ router.put('/:id', async (req, res) => {
         res.status(400).json(err)
     }
 });
-
-
-
-
-
-
 
 module.exports = router;
