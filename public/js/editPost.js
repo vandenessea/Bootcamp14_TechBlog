@@ -34,8 +34,6 @@ const updateBlogPost = async (event) => {
             }
         }
 
-        
-
     } else { alert('Must enter all values plus valid username'); }
 
 };
