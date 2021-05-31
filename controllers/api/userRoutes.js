@@ -102,7 +102,24 @@ router.post('/newPost/makePost', async (req, res) => {
 })
 
 
+// GET - user by username with associations to blogposts and comments
+router.get('/:username', async (req, res) => {
+  try {
+      console.log(`\n Getting data for user with username: ${req.params.username} \n`)
 
+      const userData = await User.findOne({ where: { username: req.params.username } });
+
+      // check to see if user data was returned
+      if(!userData) {
+          res.status(404).json({ message: 'No users found with this username'} );
+      } else {
+          res.status(200).json(userData);
+      }
+
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
 
 
 

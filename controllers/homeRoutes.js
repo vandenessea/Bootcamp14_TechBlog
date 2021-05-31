@@ -183,6 +183,34 @@ router.get('/user/all/:id', async (req, res) => {
     }
 });
 
+
+// GET - user by username with associations to blogposts and comments
+router.get('/user/username/:username', async (req, res) => {
+    try {
+        console.log(`\n Getting data for user with username: ${req.params.username} \n`)
+
+        const userData = await User.findOne(req.params.username, {
+            // this JOINS with BlogPost and Comment
+            include: [ 
+                { model: BlogPost },
+                { model: Comment } 
+            ]     
+        });
+
+        // check to see if user data was returned
+        if(!userData) {
+            res.status(404).json({ message: 'No users found with this id'} );
+        } else {
+            res.status(200).json(userData);
+        }
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+
 // GET - all blog posts
 router.get('/blogpost', async (req, res) => {
     try {
