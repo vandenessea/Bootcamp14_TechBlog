@@ -24,21 +24,14 @@ router.post('/newPost', async (req, res) => {
         user_id: postData.id,
     }
 
+    // render individual blog post page
+    res.render('home');
+
     // create new blog post
     const newPost = await BlogPost.create(bpData);
 
-    //WHY WONT THIS RENDER THE HOME PAGE!!???
-    // render individual blog post page
-    res.render('home');
+    
 });
-
-
-
-
-
-
-
-
 
 
 

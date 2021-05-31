@@ -43,12 +43,7 @@ router.get('/post/:id', async (req, res) => {
         
         console.log(`\n ${bp.id} \n`)
 
-
         res.render('post', {bp});
-        // res.render('post', {
-        //     ...bp, 
-        //     logged_in: req.session.logged_in
-        // });
 
     } catch (err) {
         res.status(500).json(err);
@@ -92,6 +87,35 @@ router.get('/newPost', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+// render editPost page
+router.get('/editPost/:id', async (req, res) => {
+    try {
+
+        const bpData = await BlogPost.findByPk(req.params.id, {
+            //this JOINS with User data
+            include: [
+                { model: User },
+            ]
+        });
+
+        // serialize data so that template can read it
+        // no need to map over it because this is one object
+        const bp = bpData.get({ plain: true });
+        
+        console.log(`\n ${bp.id} \n`)
+
+        res.render('editPost', {bp});
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
+
+
+
 
 
 

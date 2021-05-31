@@ -20,6 +20,14 @@ const newPostHandler = async (event) => {
             body: JSON.stringify({ title, content, username }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        if (response.ok) {
+            console.log(response);
+            //If successful, redirect browser to the homepage
+            document.location.replace('/');
+            alert('New Post Created!');
+        }
+
     } else {
         alert('Must input title, content, and valid username!')
     }

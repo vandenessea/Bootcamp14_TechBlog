@@ -17,7 +17,7 @@ const hbs = exphbs.create({});
 
 // Create session
 const sess = {
-  secret: 'Super secret secret',
+  secret: 'secret session',
   cookie: {},
   resave: false,
   saveUninitialized: true,
