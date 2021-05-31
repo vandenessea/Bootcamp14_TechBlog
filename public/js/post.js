@@ -1,6 +1,10 @@
 
 const handleDeletePost = async (event) => {
-
+    /**
+     * Handles deleting blog post. Selects data-attribute 'data-postID' which holds id value of current post
+     * Then makes fetch Delete request to endpoint: /api/blogpost/id to delete post. 
+     * Redirects user to homepage upon successful deletion.
+     */
 
     event.preventDefault();
 
