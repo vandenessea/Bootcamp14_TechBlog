@@ -35,6 +35,31 @@ router.post('/newPost', async (req, res) => {
 
 
 
+// delete blog post route
+// DELETE - delete a blog post by its 'id' value
+router.delete('/:id', async (req, res) => {
+    try {
+        const bpData = await BlogPost.destroy({
+            where: { id: req.params.id }
+        });
+
+        // if wrong id entered
+        if (!bpData) {
+            res.status(404).json({message: 'no blog post found with this id'});
+        } else {
+            console.log(`\n Deleting blog post with id: ${req.params.id} \n`);
+            res.status(200).json(bpData);
+        }
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+
+
+
+
 
 
 
@@ -82,25 +107,25 @@ router.put('/:id', async (req, res) => {
 })
 
 
-// DELETE - delete a blog post by its 'id' value
-router.delete('/:id', async (req, res) => {
-    try {
-        const bpData = await BlogPost.destroy({
-            where: { id: req.params.id }
-        });
+// // DELETE - delete a blog post by its 'id' value
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const bpData = await BlogPost.destroy({
+//             where: { id: req.params.id }
+//         });
 
-        // if wrong id entered
-        if (!bpData) {
-            res.status(404).json({message: 'no blog post found with this id'});
-        } else {
-            console.log(`\n Deleting blog post with id: ${req.params.id} \n`);
-            res.status(200).json(bpData);
-        }
+//         // if wrong id entered
+//         if (!bpData) {
+//             res.status(404).json({message: 'no blog post found with this id'});
+//         } else {
+//             console.log(`\n Deleting blog post with id: ${req.params.id} \n`);
+//             res.status(200).json(bpData);
+//         }
 
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// })
 
 
 module.exports = router;
