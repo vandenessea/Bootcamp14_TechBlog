@@ -115,35 +115,6 @@ router.get('/editPost/:id', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-// TEST - render post view
-// router.get('/post/:id', async (req, res) => {
-//     try {
-
-//         const bpData = await BlogPost.findAll(
-//                 {include: [{model: User}, {model: Comment}]},
-//                 {where: { id: req.params.id }}
-//             );
-        
-//         // serialize data so that template can read it
-//         const bp = bpData.map((post) => post.get({ plain: true }));
-//         res.status(200).json(bp);
-//         // res.render('post', { bp });
-
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-
 // GET - all users
 router.get('/user', async (req, res) => {
     try {
@@ -182,33 +153,6 @@ router.get('/user/all/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-
-// GET - user by username with associations to blogposts and comments
-router.get('/user/username/:username', async (req, res) => {
-    try {
-        console.log(`\n Getting data for user with username: ${req.params.username} \n`)
-
-        const userData = await User.findOne(req.params.username, {
-            // this JOINS with BlogPost and Comment
-            include: [ 
-                { model: BlogPost },
-                { model: Comment } 
-            ]     
-        });
-
-        // check to see if user data was returned
-        if(!userData) {
-            res.status(404).json({ message: 'No users found with this id'} );
-        } else {
-            res.status(200).json(userData);
-        }
-
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
 
 
 // GET - all blog posts
