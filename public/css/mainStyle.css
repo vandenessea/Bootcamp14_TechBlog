@@ -15,7 +15,9 @@ a {
     color: black;
 }
 
+/********************/
 /* Home view Styles */
+/********************/
 #blogposts {
     width: 95%;
     display: flex;
@@ -28,7 +30,9 @@ a {
     margin: 10px 0 5px 35px;
 }
 
+/*******************************/
 /* Individual blog post styles */
+/*******************************/
 #authorName, #datePosted {
     font-size: 20px;
     font-weight: bold;
@@ -52,8 +56,13 @@ a {
     visibility: hidden;
 }
 
-/* Login view styles */
-#loginForm {
+/***************/
+/* Form styles */
+/***************/
+#loginForm, 
+#registrationForm, 
+#newPostForm,
+#editPostForm {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -66,41 +75,31 @@ a {
     width: 50%;
 }
 
+
+/*********************/
+/* Login view styles */
+/*********************/
 #register:hover {
     opacity: 0.5;
 }
 
-
+/****************************/
 /* Registration form styles */
-
-#registrationForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+/****************************/
 .form-item {
     margin-bottom: 10px;
 }
 
-/* New Post view styles */
 
-#newPostForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/*****************/
+/* Media Queries */
+/*****************/
+@media screen and (max-width: 1000px) {
+    nav {
+        height: 225px;
+        font-size: 20px;
+    }
 }
 
 
-/* Edit Post view styles */
-#editPostForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
