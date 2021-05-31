@@ -20,8 +20,10 @@ const registrationFormHandler = async (event) => {
             // If successful, redirect the browser to the profile page
             document.location.replace('/');
           } else {
-            alert('Please enter a valid username and password');
+            alert('Please enter a valid username, email, and password');
           }
+    } else {
+      alert('Please enter a valid username, email, and password')
     }
 };
 
