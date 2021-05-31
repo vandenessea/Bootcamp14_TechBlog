@@ -1,1 +1,2 @@
-console.log('live from post!');
+console.log('lets delete a post');
+
