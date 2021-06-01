@@ -28,21 +28,24 @@
 
   ## Installation
 
-  Navigate to the root directory of this repository and run the following commands to install necessary dependencies:
+  To run app locally, navigate to the root directory of this repository and run the following commands to install necessary dependencies:
 
     npm i
-
-  ## Usage
-
+    
+  Create your own .env file which will contain the following:
   
-
-  ## Contributions 
-
+    DB_NAME= your database name
+    DB_USER= your username
+    DB_PASSWORD = your password
+    
+  To create your own database, navigate to the db/ directory and run the following SQL Statements either in MySQL workbench or in MySQL command prompt: 
   
-
-  ## Tests 
-
+    DROP DATABASE IF EXISTS tech_blog_db;
+    CREATE DATABASE tech_blog_db;
+    
+  To seed your database, from the root directory of the project run the following:
   
+    node seeds/seed.js  
 
   ## Questions 
 
