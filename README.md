@@ -2,6 +2,10 @@
   # Project Name:
 
   MVC Tech Blog
+  
+  ## Deployed Application
+  
+  [Click Here](https://intense-dawn-84284.herokuapp.com/)
 
   ## License
 
