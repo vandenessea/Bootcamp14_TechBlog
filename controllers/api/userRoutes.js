@@ -26,6 +26,7 @@ router.post('/login', async (req, res) => {
         return;
       }
 
+
       // render homepage if valid credentials given by user
       res.render('home');
 
