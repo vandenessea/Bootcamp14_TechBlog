@@ -6,6 +6,7 @@ const { User, BlogPost, Comment } = require('../models');
 //This is a test route. This prints data
 router.get('/test1', (req, res) => {
     const response = 'this is a test';
+    console.log(response)
     res.status(200).json(response)
 })
 
