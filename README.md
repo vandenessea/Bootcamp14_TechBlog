@@ -9,11 +9,7 @@
   
   ## Known Issues
   
-  The following are known issues (among many others I am sure) I did not add into this application due to time constraints or just a total failure to implement:
-  
-  - No way to add comments (I had some seeded comments in my local setup)
-  - No session/cookies tracking
-  - No Logout
+ *Logout button dosent always redirect you to homepage.
 
   ## License
 
