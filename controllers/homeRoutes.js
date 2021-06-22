@@ -3,7 +3,7 @@ const { User, BlogPost, Comment } = require('../models');
 
 
 // render homepage
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {//end point is '/'.
     try {
         //get all blog posts and JOIN with user 
         const bpData = await BlogPost.findAll({
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
         //serialize data so template can read it
         // need to map over it because this is an array of objects
-        const bp = bpData.map((post) => post.get({ plain: true }));
+        const bp = bpData.map((post) => post.get({ plain: true }));//This line converts the data to a string
 
         // pass serialized data into template
         // render 'home' view and pass bp data into it

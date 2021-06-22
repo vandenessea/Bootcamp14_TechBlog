@@ -19,8 +19,9 @@ const newPostHandler = async (event) => {
             method: 'POST',
             body: JSON.stringify({ title, content, username }),
             headers: { 'Content-Type': 'application/json' },
+            
         });
-
+        
         if (response.ok) {
             console.log(response);
             //If successful, redirect browser to the homepage
